@@ -1,18 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"os/exec"
 )
 
 // Deploy 启动脚本方法
-func Deploy() error {
+func Deploy(scriptName string) error {
 	//创建脚本执行命令
-	c := "./deploy.sh"
+	c := "./" + scriptName + ".sh"
 	cmd := exec.Command("sh", "-c", c)
 	if _, err := cmd.Output(); err != nil {
-		//打印并返回错误信息
-		fmt.Println(err)
+		//返回错误信息
 		return err
 	} else {
 		return nil
